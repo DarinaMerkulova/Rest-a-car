@@ -74,16 +74,15 @@ export class App extends Component {
       localStorage.setItem('contacts', stringifiedContacts);
     }
   }
-  // renderText =()=>{return <div>Додайте вашу першу книгу</div>}
-  render() {
+    render() {
     const filteredContacts = this.getFilterContacts();
-    const { filter } = this.state;
+    const { filter, contacts } = this.state;
     return (
       <Container>
         <h1>Phonebook</h1>
         <ContactForm onAddContact={this.onAddContact} />
         <ContactTitle>Contacts</ContactTitle>
-        {this.state.contacts.length > 0 ? (
+        {contacts.length > 0 ? (
           <Filter filter={filter} onFilterChange={this.handleFilterChange} />
         ) : (
           <div>Your phonebook is empty. Add first contact!</div>
