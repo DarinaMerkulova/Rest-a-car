@@ -60,6 +60,21 @@ export class App extends Component {
     );
   };
 
+  componentDidMount() {
+    const stringifiedContacts = localStorage.getItem('contacts');
+    const contacts = JSON.parse(stringifiedContacts) ?? [];
+
+    this.setState({ contacts });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    
+    if (prevState.contacts.length !== this.state.contacts.length) {
+      const stringifiedContacts = JSON.stringify(this.state.contacts);
+      localStorage.setItem('contacts', stringifiedContacts);
+    }
+  }
+  // renderText =()=>{return <div>Додайте вашу першу книгу</div>}
   render() {
     const filteredContacts = this.getFilterContacts();
     const { filter } = this.state;
