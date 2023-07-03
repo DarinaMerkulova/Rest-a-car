@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ErrorMessage, Formik } from 'formik';
-import { FormButton, FormField, FormLabel, Input } from './ContactForm.styled';
+import { FormButton, FormField, FormLabel, Input, LabelWrap } from './ContactForm.styled';
+import { MdCreate, MdPermContactCalendar, MdStayCurrentPortrait } from 'react-icons/md';
 
 const initialValues = {
   name: '',
@@ -39,7 +40,8 @@ export default class ContactForm extends Component {
       <Formik initialValues={initialValues} onSubmit={this.handleSubmit}>
         <FormField>
           <FormLabel>
-            <span>Name:</span>
+           <LabelWrap><MdPermContactCalendar />
+           <span> Name:</span></LabelWrap>
             <Input
               onChange={this.handleInputChange}
               value={this.state.name}
@@ -52,7 +54,8 @@ export default class ContactForm extends Component {
             <ErrorMessage name="name" />
           </FormLabel>
           <FormLabel>
-            <span>Number:</span>
+          <LabelWrap><MdStayCurrentPortrait />
+           <span> Number:</span></LabelWrap>
             <Input
               onChange={this.handleInputChange}
               value={this.state.number}
@@ -64,8 +67,8 @@ export default class ContactForm extends Component {
             />
             <ErrorMessage name="number" />
           </FormLabel>
-          <FormButton type="submit" className="form-btn">
-            Add contact
+          <FormButton type="submit" className="form-btn"> <MdCreate />
+            <span>Add contact</span>
           </FormButton>
         </FormField>
       </Formik>

@@ -23,10 +23,19 @@ export const FormLabel = styled.label`
   font-weight: 500;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+ 
   gap: 30px;
 `;
-
+export const LabelWrap = styled.div`
+display: flex;
+align-items: end;
+gap: 5px`
 export const FormButton = styled.button`
+display: flex;
+gap: 20px;
+align-items:center;
+justify-content:center;
   cursor: pointer;
   padding: 15px 30px;
   min-width: 100px;
