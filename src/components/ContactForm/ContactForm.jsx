@@ -78,7 +78,7 @@ export const ContactForm = ({ onAddContact }) => {
         </FormLabel>
         <FormButton type="submit" className="form-btn">
           {' '}
-          <MdCreate />
+          <MdCreate size ="22px"/>
           <span>Add contact</span>
         </FormButton>
       </FormField>
