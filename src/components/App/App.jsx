@@ -50,14 +50,14 @@ if (isInContacts) {
     const normalizedFilter = filter.toLowerCase();
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
-    );
-  };
+    ) };
 
   useEffect(() => {
     const stringifiedContacts = JSON.stringify(contacts);
     localStorage.setItem('contacts', stringifiedContacts);
   }, [contacts]);
 
+  const filteredContacts = getFilterContacts()
   return (
     <Container>
       <h1>Phonebook</h1>
@@ -68,10 +68,14 @@ if (isInContacts) {
       ) : (
         <div>Your phonebook is empty. Add first contact!</div>
       )}
-      <ContactList
-        contacts={getFilterContacts()}
-        onRemoveContact={onRemoveContact}
-      />
+      {filteredContacts.length > 0 ? (
+        <ContactList
+          contacts={filteredContacts}
+          onRemoveContact={onRemoveContact}
+        />
+      ) : (
+        <div>No contacts found.</div>
+      )}
     </Container>
   );
 };
