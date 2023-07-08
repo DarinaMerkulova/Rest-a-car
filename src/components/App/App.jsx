@@ -25,15 +25,16 @@ export const App = () => {
       id: nanoid(),
     };
 
-    const isInContacts = contacts.some(
-      ({ name }) => name.toLowerCase() === contactData.name.toLowerCase()
-    );
+    const isInContacts = contacts.some(({ name, number }) =>
+  (name.toLowerCase() === contactData.name.toLowerCase() &&
+    (alert(`${contactData.name} is already in contacts`))) ||
+  (number.toLowerCase() === contactData.number.toLowerCase() &&
+    (alert(`${contactData.number} is already in contacts`)))
+);
 
-    if (isInContacts) {
-      alert(`${contactData.name} is already in contacts`);
-      return;
-    }
-
+if (isInContacts) {
+  return;
+}
     setContacts([contactBook, ...contacts]);
   };
 
