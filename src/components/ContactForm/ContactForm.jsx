@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { ErrorMessage, Formik } from 'formik';
 import {
   FormButton,
@@ -13,14 +12,19 @@ import {
   MdPermContactCalendar,
   MdStayCurrentPortrait,
 } from 'react-icons/md';
+import { useDispatch, useSelector } from 'react-redux';
+import { getContacts } from 'redux/selectors';
+import { addContact } from 'redux/reducers/contactsSlice';
 
 const initialValues = {
   name: '',
   number: '+380',
 };
-export const ContactForm = ({ onAddContact }) => {
+export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const contacts = useSelector(getContacts);
+  const dispatch = useDispatch();
 
   const handleInputChange = ({ target }) => {
     if (target.name === 'name') {
@@ -35,7 +39,17 @@ export const ContactForm = ({ onAddContact }) => {
   const handleSubmit = (values, actions) => {
     const contactData = { name, number };
 
-    onAddContact(contactData);
+    const isInContacts = contacts.some(
+      ({ name, number }) =>
+        name.toLowerCase() === contactData.name.toLowerCase() ||
+        number.toLowerCase() === contactData.number.toLowerCase()
+    );
+
+    if (isInContacts) {
+      alert(`The contact is already in contacts`);
+      return;
+    }
+    dispatch(addContact(contactData));
     setName('');
     setNumber('');
     actions.resetForm();
@@ -78,14 +92,10 @@ export const ContactForm = ({ onAddContact }) => {
         </FormLabel>
         <FormButton type="submit" className="form-btn">
           {' '}
-          <MdCreate size ="22px"/>
+          <MdCreate size="22px" />
           <span>Add contact</span>
         </FormButton>
       </FormField>
     </Formik>
   );
-};
-
-ContactForm.propTypes = {
-  onAddContact: PropTypes.func.isRequired,
 };
