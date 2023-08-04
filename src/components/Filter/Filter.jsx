@@ -1,10 +1,10 @@
 import { FindText, InputFind } from './Filter.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFilter } from 'redux/selectors';
+import { selectFilter } from 'redux/selectors';
 import { setFilter } from 'redux/reducers/filterSlice';
 
 export const Filter = () => {
-  const filter = useSelector(getFilter);
+  const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
   const onFilterChange = event => {
     dispatch(setFilter(event.target.value));

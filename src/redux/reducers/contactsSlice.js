@@ -1,34 +1,59 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit';
- const initialStateContacts = {
-  contacts: [
-    { id: 'id-1', name: 'Rosie Simpson', number: '+459-12-56' },
-    { id: 'id-2', name: 'Hermione Kline', number: '+443-89-12' },
-    { id: 'id-3', name: 'Eden Clements', number: '+645-17-79' },
-    { id: 'id-4', name: 'Annie Copeland', number: '+227-91-26' },
-  ],
- };
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { createContactsThunk, deleteContactsThunk, getContactsThunk } from 'redux/operations';
+
+  const initialStateContacts = {
+  items: [],
+  isLoading: false,
+  error: null,
+};
+
+
+const arrThunk = [createContactsThunk, deleteContactsThunk, getContactsThunk];
+
+const thunkFilter = (type) => {
+  return arrThunk.map((el) => el[type]);
+}
+
+const handlePending = state => {
+  state.isLoading = true;
+};
+
+const handleFulfilled = state => {
+  state.isLoading = false;
+  state.error = '';
+};
+
+const handleFulfilledGet = (state, { payload }) => {
+  handleFulfilled(state);
+  state.items = payload;
+};
+
+const handleFulfilledCreate = (state, { payload }) => {
+  handleFulfilled(state);
+
+  state.items.push(payload);
+};
+
+const handleFulfilledDelete = (state, { payload }) => {
+  handleFulfilled(state);
+  state.items = state.items.filter(contact => contact.id !== payload.id);
+};
+
+const handleRejected = (state, { payload }) => {
+  state.error = payload;
+};
+
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: initialStateContacts,
-  reducers: {
-    addContact: {
-      reducer(state, action) {
-        state.contacts=[...state.contacts, action.payload]
-      },
-      prepare(newContact) {
-        return {
-          payload: {
-            ...newContact,
-            id: nanoid(),
-          },
-        };
-      },
-    },
-    deleteContact(state, action) {
-      state.contacts = state.contacts.filter(contact => contact.id !== action.payload);
-    },
+  extraReducers: builder => {
+    builder
+      .addCase(getContactsThunk.fulfilled, handleFulfilledGet)
+      .addCase(createContactsThunk.fulfilled, handleFulfilledCreate)
+      .addCase(deleteContactsThunk.fulfilled, handleFulfilledDelete)
+      .addMatcher(isAnyOf(...thunkFilter('pending')), handlePending)
+      .addMatcher(isAnyOf(...thunkFilter('rejected')), handleRejected);
   },
 });
 
-export const { addContact, deleteContact } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

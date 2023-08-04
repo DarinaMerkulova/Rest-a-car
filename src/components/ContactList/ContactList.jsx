@@ -1,17 +1,24 @@
-import React from 'react';
-import { List, Item, Button } from './ContactList.styled';
+import React, { useEffect } from 'react';
+import { List, Item, Button, Text } from './ContactList.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts, getFilter } from 'redux/selectors';
-import { deleteContact } from 'redux/reducers/contactsSlice';
+import { selectContacts, selectError, selectFilter, selectLoading } from 'redux/selectors';
+import { deleteContactsThunk, getContactsThunk } from 'redux/operations';
+import { Loader } from 'components/Loader/Loader';
 
 // Компонент списка контактов
 const ContactList = () => {
+ 
   const dispatch = useDispatch();
-  const filter = useSelector(getFilter);
-  const contacts = useSelector(getContacts);
+  const filter = useSelector(selectFilter);
+  const contacts = useSelector(selectContacts);
+  const isLoading = useSelector(selectLoading);
+  const error = useSelector(selectError)
+
+  useEffect(()=>{
+    dispatch(getContactsThunk())},[dispatch])
 
   const onRemoveContact = contactId => {
-    dispatch(deleteContact(contactId));
+    dispatch(deleteContactsThunk(contactId));
   };
 
   const normalizedFilter = filter.toLowerCase();
@@ -19,15 +26,23 @@ const ContactList = () => {
     contact.name.toLowerCase().includes(normalizedFilter)
   );
 
+  
   return (
     <div>
-      {/* Список контактів */}
       <List>
-        {filteredContacts.map(contact => (
+      {isLoading && !error ? (
+        <Loader />
+      ) : contacts.length === 0 && !error ? (
+        <Text>The Phonebook is empty. Add your first contact.</Text>
+      ) : 
+       filteredContacts.length === 0 && !error ? (
+        <Text>Not find</Text>
+      ):
+        (filteredContacts.map(contact => (
           <Item key={contact.id}>
             {contact.name + ' : ' + contact.number}
             {
-              // Кнопка удаления контакта
+      
               <Button
                 type="button"
                 name="delete"
@@ -37,7 +52,7 @@ const ContactList = () => {
               </Button>
             }
           </Item>
-        ))}
+        )))}
       </List>
     </div>
   );

@@ -42,3 +42,8 @@ export const Button = styled.button`
     font-weight: 600;
   }
 `;
+
+export const Text = styled.p`
+font-size:20px;
+text-align: center;
+`

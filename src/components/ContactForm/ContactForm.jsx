@@ -13,8 +13,8 @@ import {
   MdStayCurrentPortrait,
 } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
-import { addContact } from 'redux/reducers/contactsSlice';
+import { selectContacts } from 'redux/selectors';
+import { createContactsThunk} from 'redux/operations';
 
 const initialValues = {
   name: '',
@@ -23,7 +23,7 @@ const initialValues = {
 export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const handleInputChange = ({ target }) => {
@@ -36,8 +36,10 @@ export const ContactForm = () => {
     return;
   };
 
+
   const handleSubmit = (values, actions) => {
     const contactData = { name, number };
+   
 
     const isInContacts = contacts.some(
       ({ name, number }) =>
@@ -49,7 +51,7 @@ export const ContactForm = () => {
       alert(`The contact is already in contacts`);
       return;
     }
-    dispatch(addContact(contactData));
+    dispatch(createContactsThunk(contactData));
     setName('');
     setNumber('');
     actions.resetForm();

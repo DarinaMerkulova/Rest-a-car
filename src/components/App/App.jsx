@@ -4,8 +4,8 @@ import ContactList from '../ContactList/ContactList';
 import { ContactTitle, Container } from './App.styled';
 
 
-export const App = () => {
 
+export const App = () => {
   return (
     <Container>
       <h1>Phonebook</h1>
