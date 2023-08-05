@@ -8,8 +8,8 @@ import {
   LabelWrap,
 } from './ContactForm.styled';
 import {
-  MdCreate,
   MdPermContactCalendar,
+  MdPersonAddAlt,
   MdStayCurrentPortrait,
 } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
@@ -94,8 +94,8 @@ export const ContactForm = () => {
         </FormLabel>
         <FormButton type="submit" className="form-btn">
           {' '}
-          <MdCreate size="22px" />
-          <span>Add contact</span>
+          <MdPersonAddAlt size="28px" />
+          <p>Add contact</p>
         </FormButton>
       </FormField>
     </Formik>

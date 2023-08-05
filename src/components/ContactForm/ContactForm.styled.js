@@ -30,7 +30,8 @@ export const FormLabel = styled.label`
 export const LabelWrap = styled.div`
 display: flex;
 align-items: end;
-gap: 5px`
+gap: 5px;`
+
 export const FormButton = styled.button`
 display: flex;
 gap: 20px;
