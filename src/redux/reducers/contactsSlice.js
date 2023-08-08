@@ -29,9 +29,10 @@ const handleFulfilledGet = (state, { payload }) => {
 };
 
 const handleFulfilledCreate = (state, { payload }) => {
+  state.items.push(payload);
   handleFulfilled(state);
 
-  state.items.push(payload);
+  
 };
 
 const handleFulfilledDelete = (state, { payload }) => {

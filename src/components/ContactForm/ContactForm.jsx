@@ -68,6 +68,7 @@ export const ContactForm = () => {
           <Input
             onChange={handleInputChange}
             value={name}
+            placeholder='Enter name'
             pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="The title can only contain letters, apostrophes, hyphens, and spaces."
             name="name"
@@ -84,6 +85,7 @@ export const ContactForm = () => {
           <Input
             onChange={handleInputChange}
             value={number}
+            placeholder='Enter phone number'
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[\-.\s]?\(?\d{1,3}?\)?[\-.\s]?\d{1,4}[\-.\s]?\d{1,4}[\-.\s]?\d{1,9}"

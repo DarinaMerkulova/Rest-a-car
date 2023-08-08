@@ -38,6 +38,7 @@ export const Button = styled.button`
   background-color: rgb(238, 234, 234);
   box-shadow: 0 0 5px rgb(14, 82, 91);
   border: none;
+  transition: font-weight 0.3s ease;
   :hover {
     font-weight: 600;
   }
