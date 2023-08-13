@@ -4,13 +4,15 @@ export const List = styled.ul`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 400px;
+  width: 250px;
   padding: 12px;
   border-radius: 4px;
   background-color: transparent;
   box-shadow: 0 0 5px rgb(14, 82, 91);
   border: none;
   list-style: none;
+  @media screen and (min-width: 480px){ width: 320px;font-size: 16px;}
+  @media screen and (min-width: 768px){ width: 360px;font-size: 16px;}
 `;
 
 export const Item = styled.li`
@@ -22,12 +24,14 @@ export const Item = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 20px;
+  font-size: 12px;
   transition: background-color 0.3s ease, scale 0.3s ease;
   :hover {
     background-color: rgb(14, 82, 91);
     scale: 1.05;
   }
+  @media screen and (min-width: 480px){ font-size: 16px;}
+ 
 `;
 
 export const Button = styled.button`

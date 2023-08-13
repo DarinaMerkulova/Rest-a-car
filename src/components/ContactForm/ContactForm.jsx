@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
 import { ErrorMessage, Formik } from 'formik';
-import {
-  FormButton,
-  FormField,
-  FormLabel,
-  Input,
-  LabelWrap,
-} from './ContactForm.styled';
+
 import {
   MdPermContactCalendar,
   MdPersonAddAlt,
@@ -15,6 +9,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/selectors';
 import { createContactsThunk} from 'redux/operations';
+import { FormButton, FormField, FormLabel, Input, LabelWrap } from './ContactForm.styled';
 
 const initialValues = {
   name: '',
@@ -60,7 +55,7 @@ export const ContactForm = () => {
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       <FormField>
-        <FormLabel>
+          <FormLabel>
           <LabelWrap>
             <MdPermContactCalendar />
             <span> Name:</span>
@@ -96,7 +91,7 @@ export const ContactForm = () => {
         </FormLabel>
         <FormButton type="submit" className="form-btn">
           {' '}
-          <MdPersonAddAlt size="28px" />
+          <MdPersonAddAlt size="24px" />
           <p>Add contact</p>
         </FormButton>
       </FormField>
