@@ -1,7 +1,6 @@
-
-
 import { useCallback } from 'react';
 import Particles from 'react-tsparticles';
+
 import { loadSlim } from 'tsparticles-slim';
 
 const ParticlesLines = () => {
@@ -15,7 +14,7 @@ const ParticlesLines = () => {
   }, []);
 
   return (
-    <Particles
+    <Particles 
       id="tsparticles"
       init={particlesInit}
       loaded={particlesLoaded}

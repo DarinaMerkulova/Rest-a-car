@@ -8,8 +8,10 @@ export const HomePageSection = styled.div`
 export const HomePageTextWrap = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: center;
   margin-left: auto;
+  width:100%;
+  @media screen and (min-width: 768px) {width:50%; align-items: start;}
 `;
 
 export const TitleHomePage = styled.h2`
@@ -29,6 +31,7 @@ export const TitleHomePage = styled.h2`
 
 export const TextHomePage = styled.p`
   font-size: 12px;
+  text-align:center;
   width: 200px;
   margin-bottom: 20px;
   letter-spacing: 2px;
@@ -40,6 +43,7 @@ export const TextHomePage = styled.p`
   @media screen and (min-width: 768px) {
     font-size: 18px;
     width: 450px;
+    text-align:justify;
   }
 `;
 
