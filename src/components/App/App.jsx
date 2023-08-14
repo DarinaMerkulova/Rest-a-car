@@ -40,9 +40,7 @@ export const App = () => {
         <StyledNavLink to="/">Home</StyledNavLink>
         {authentificated && <StyledNavLink to="/contacts">Contacts</StyledNavLink>}
         </HeaderWrapPage>
-        
-        {/* <PhonebookTitle>Phonebook</PhonebookTitle> */}
-      
+                 
         {authentificated ?<UserMenu/> :
         <HeaderWrapRegistration>
            <StyledNavLink to="/login">Login</StyledNavLink>
