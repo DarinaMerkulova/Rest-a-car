@@ -1,6 +1,7 @@
-import Particles from 'react-particles';
+
 
 import { useCallback } from 'react';
+import Particles from 'react-tsparticles';
 import { loadSlim } from 'tsparticles-slim';
 
 const ParticlesLines = () => {
