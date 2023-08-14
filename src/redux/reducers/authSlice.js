@@ -11,7 +11,7 @@ const initialState = {
   error: null,
   userData: null,
   token: null,
-  authentificated: false,
+  isLogining: false,
 };
 
 const arrThunk = [
@@ -36,27 +36,27 @@ const handleRejected = (state, { payload }) => {
 
 const handleFulfilledRegister = (state, { payload }) => {
   state.isLoading = false;
-  state.authentificated = true;
+  state.isLogining = true;
   state.userData = payload.user;
   state.token = payload.token;
 };
 
 const handleFulfilledLogin = (state, { payload }) => {
   state.isLoading = false;
-  state.authentificated = true;
+  state.isLogining = true;
   state.userData = payload.user;
   state.token = payload.token;
 };
 
 const handleFulfilledRefresh = (state, { payload }) => {
   state.isLoading = false;
-  state.authentificated = true;
+  state.isLogining = true;
   state.userData = payload;
 };
 
 const handleFulfilledLogout = (state, { payload }) => {
   state.isLoading = false;
-  state.authentificated = false;
+  state.isLogining = false;
   state.userData = null;
   state.token = null;
 };

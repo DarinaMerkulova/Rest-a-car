@@ -14,7 +14,7 @@ import { Navigate } from 'react-router-dom';
 
 const Register = () => {
   const dispatch = useDispatch();
-  const authenticated = useSelector(selectAuthentificated);
+  const isLogining = useSelector(selectAuthentificated);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -34,30 +34,42 @@ const Register = () => {
     );
   };
 
-  if (authenticated) return <Navigate to="/contacts" />;
-
+  if (isLogining) return <Navigate to="/contacts" />;
 
   return (
-      <FormField onSubmit={handleSubmit} >
-        <StyledTitleForm>Registration</StyledTitleForm>
-        <FormLabel>* Username</FormLabel>
-        <Input type="text" name="name" placeholder="Enter your name" required pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="The title can only contain letters, apostrophes, hyphens, and spaces."/>
-        <FormLabel>* Email</FormLabel>
-        <Input type="email" name="email" placeholder="Enter your email"required />
-        <FormLabel>* Password</FormLabel>
-        <Input
-          type="password"
-          name="password"
-          placeholder="Enter your password" required
-        />
-        
-        <FormButton type="submit">Sign Up</FormButton>
-        <ButtonWrap>
-        <p>Have an Account?</p> 
-        <StyledLink to ="/login">Sing in</StyledLink></ButtonWrap>
-      </FormField>
-      );
+    <FormField onSubmit={handleSubmit}>
+      <StyledTitleForm>Registration</StyledTitleForm>
+      <FormLabel>* Username</FormLabel>
+      <Input
+        type="text"
+        name="name"
+        placeholder="Enter your name"
+        required
+        pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+        title="The title can only contain letters, apostrophes, hyphens, and spaces."
+      />
+      <FormLabel>* Email</FormLabel>
+      <Input
+        type="email"
+        name="email"
+        placeholder="Enter your email"
+        required
+      />
+      <FormLabel>* Password</FormLabel>
+      <Input
+        type="password"
+        name="password"
+        placeholder="Enter your password"
+        required
+      />
+
+      <FormButton type="submit">Sign Up</FormButton>
+      <ButtonWrap>
+        <p>Have an Account?</p>
+        <StyledLink to="/login">Sing in</StyledLink>
+      </ButtonWrap>
+    </FormField>
+  );
 };
 
 export default Register;

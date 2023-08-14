@@ -1,4 +1,4 @@
-import { Container, HeaderContainer, HeaderWrapPage, HeaderWrapRegistration, PhonebookTitle, StyledHeader, StyledNavLink, StyledNavigation } from './App.styled';
+import { Container, HeaderContainer, HeaderWrapPage, HeaderWrapRegistration,StyledHeader, StyledNavLink, StyledNavigation } from './App.styled';
 import { lazy, useEffect } from 'react';
 import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
@@ -12,7 +12,7 @@ import ParticlesLines from 'components/ParticlesLines';
 
 
 
-const HomePage = lazy(() => import('pages/HomePage'));
+const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const ContactsPage = lazy(() => import('pages/Contacts'));
 const RegisterPage = lazy(() => import('pages/Register'));
 const LoginPage = lazy(() => import('pages/Login'));

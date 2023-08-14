@@ -16,7 +16,7 @@ import { Navigate } from 'react-router-dom';
 
 const Login = () => {
   const dispatch = useDispatch();
-  const authenticated = useSelector(selectAuthentificated);
+  const isLogining = useSelector(selectAuthentificated);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -30,18 +30,17 @@ const Login = () => {
     );
     form.reset();
   };
-  if (authenticated) return <Navigate to="/contacts" />;
+  if (isLogining) return <Navigate to="/contacts" />;
   return (
     <FormField onSubmit={handleSubmit}>
       <StyledTitleForm>Log in</StyledTitleForm>
       <FormLabel>* Email</FormLabel>
-      <Input 
-        type="email" 
+      <Input
+        type="email"
         name="email"
         placeholder="Enter your email"
-        required 
-        pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="The title can only contain letters, apostrophes, hyphens, and spaces."/>
+        required
+      />
       <FormLabel>* Password</FormLabel>
       <Input
         type="password"
