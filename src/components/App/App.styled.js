@@ -25,10 +25,10 @@ transition: color 0.3s ease ;
     text-decoration:underline;
   }
 
-@media screen and (min-width: 768px) {
+  @media screen and (min-width: 480px) {
   padding: 10px 15px;
-  font-size:18px;
-}
+  font-size:18px;}
+
 @media screen and (min-width: 1200px) {
   padding: 15px 25px;}`
 
@@ -40,6 +40,7 @@ align-items: center;
 export const Container = styled.div`
     max-width: 300px;
     padding:15px;
+    margin: 0 auto;
 @media screen and (min-width: 480px) {
     max-width: 428px;
     }
@@ -76,6 +77,7 @@ export const  HeaderWrapPage = styled.div`
   export const HeaderContainer = styled.div`
    max-width: 300px;
     padding:0 15px;
+    margin: 0 auto;
 @media screen and (min-width: 480px) {
     max-width: 428px;
     }

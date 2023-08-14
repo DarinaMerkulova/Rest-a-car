@@ -5,6 +5,7 @@ import { selectContacts, selectError, selectFilter, selectLoading } from 'redux/
 import { deleteContactsThunk, getContactsThunk } from 'redux/operations';
 import { Loader } from 'components/Loader/Loader';
 
+
 // Компонент списка контактов
 const ContactList = () => {
  
