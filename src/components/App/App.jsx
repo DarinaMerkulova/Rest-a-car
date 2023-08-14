@@ -55,7 +55,7 @@ export const App = () => {
        <main>
        <Suspense fallback={<Loader />}>
          <Routes>
-           <Route path="/" element={<HomePage />} />
+         <Route path="/" element={<HomePage />} index /> {/* Додайте index тут */}
            <Route
               path="/contacts"
               element={
