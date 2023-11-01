@@ -1,8 +1,8 @@
 {
-  "name": "goit-react-hw-08-phonebook",
+  "name": "rest-a-car",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://darinamerkulova.github.io/goit-react-hw-08-phonebook",
+  "homepage": "https://darinamerkulova.github.io/rest-a-car",
   "dependencies": {
     "@ant-design/colors": "^7.0.0",
     "@emotion/react": "^11.11.1",

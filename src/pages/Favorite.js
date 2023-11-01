@@ -14,7 +14,7 @@ import { loginUserThunk } from 'redux/operations';
 import { selectAuthentificated } from 'redux/selectors';
 import { Navigate } from 'react-router-dom';
 
-const Login = () => {
+const Favorite = () => {
   const dispatch = useDispatch();
   const isLogining = useSelector(selectAuthentificated);
 
@@ -57,4 +57,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Favorite;

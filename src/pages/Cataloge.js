@@ -5,7 +5,7 @@ import ContactList from 'components/ContactList/ContactList'
 import { Filter } from 'components/Filter/Filter'
 import React from 'react'
 
-const Contacts = () => {
+const Cataloge = () => {
   return (
     <Container>
         <SectionPage>
@@ -18,4 +18,4 @@ const Contacts = () => {
 
 
 
-export default Contacts
+export default Cataloge

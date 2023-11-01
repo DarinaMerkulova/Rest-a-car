@@ -20,9 +20,8 @@ import ParticlesLines from 'components/ParticlesLines';
 import { LoaderMain } from 'components/Loader/LoaderMain';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
-const ContactsPage = lazy(() => import('pages/Contacts'));
-const RegisterPage = lazy(() => import('pages/Register'));
-const LoginPage = lazy(() => import('pages/Login'));
+const ContactsPage = lazy(() => import('pages/Cataloge'));
+const LoginPage = lazy(() => import('pages/Favorite'));
 
 export const App = () => {
   const dispatch = useDispatch();
