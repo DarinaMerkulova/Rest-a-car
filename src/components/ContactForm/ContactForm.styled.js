@@ -2,17 +2,12 @@ import styled from '@emotion/styled';
 import { Field, Form } from 'formik';
 
 export const SectionPage = styled.section`
-display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-  margin: 30px auto;
-  padding: 10px;
   background-color: rgba(14, 82, 91, 0.04);
   border-radius: 20px;
   box-shadow: 0 0 20px rgb(14, 82, 91);
-  width: 270px;
-  
+  width: 100%;
+  margin: 40px auto;
+/*   
   @media screen and (min-width: 480px){
     margin: 40px auto;
     gap: 40px;
@@ -24,7 +19,7 @@ display: flex;
     margin: 80px auto;
     padding: 40px;
     gap: 40px;
-   }
+   } */
   `
 export const ContactsTitle = styled.h1`
 font-size:16px;

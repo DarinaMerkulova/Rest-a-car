@@ -1,60 +1,39 @@
 import {
-  Container,
+
   HeaderContainer,
   HeaderWrapPage,
-  HeaderWrapRegistration,
+  Logo,
   StyledHeader,
   StyledNavLink,
   StyledNavigation,
 } from './App.styled';
-import { lazy, useEffect } from 'react';
+import { lazy } from 'react';
 import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { selectAuthentificated, selectToken } from 'redux/selectors';
-import { useDispatch, useSelector } from 'react-redux';
-import { refreshUserThunk } from 'redux/operations';
-import UserMenu from 'components/UserManu/UserMenu';
-import PrivateRoute from 'components/PrivateRoute';
-import ParticlesLines from 'components/ParticlesLines';
+
+
 import { LoaderMain } from 'components/Loader/LoaderMain';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
-const ContactsPage = lazy(() => import('pages/Cataloge'));
-const LoginPage = lazy(() => import('pages/Favorite'));
+const CatalogePage = lazy(() => import('pages/Cataloge'));
+const FavoritePage = lazy(() => import('pages/Favorite'));
 
 export const App = () => {
-  const dispatch = useDispatch();
-  const token = useSelector(selectToken);
-  const authentificated = useSelector(selectAuthentificated);
+ 
 
-  useEffect(() => {
-    if (!token || authentificated) return;
-
-    dispatch(refreshUserThunk());
-  }, [token, dispatch, authentificated]);
-
+  
   return (
-    <Container>
-      <ParticlesLines />
-      <StyledHeader>
+    <div>
+        <StyledHeader>
         <HeaderContainer>
           <StyledNavigation>
             <HeaderWrapPage>
+              <Logo>Wave Drive</Logo>
               <StyledNavLink to="/">Home</StyledNavLink>
-              {authentificated && (
-                <StyledNavLink to="/contacts">Contacts</StyledNavLink>
-              )}
+              <StyledNavLink to="/cataloge">Cataloge</StyledNavLink>
+              <StyledNavLink to="/favorite">Favorite</StyledNavLink>
             </HeaderWrapPage>
-
-            {authentificated ? (
-              <UserMenu />
-            ) : (
-              <HeaderWrapRegistration>
-                <StyledNavLink to="/login">Login</StyledNavLink>
-                <StyledNavLink to="/register">Register</StyledNavLink>
-              </HeaderWrapRegistration>
-            )}
           </StyledNavigation>
         </HeaderContainer>
       </StyledHeader>
@@ -63,19 +42,11 @@ export const App = () => {
         <Suspense fallback={<LoaderMain />}>
           <Routes>
             <Route path="/" element={<HomePage />} index />
-            <Route
-              path="/contacts"
-              element={
-                <PrivateRoute redirectTo="/login">
-                  <ContactsPage />
-                </PrivateRoute>
-              }
-            />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/cataloge" element={<CatalogePage />} />
+            <Route path="/favorite" element={<FavoritePage />} />
           </Routes>
         </Suspense>
       </main>
-    </Container>
+    </div>
   );
 };

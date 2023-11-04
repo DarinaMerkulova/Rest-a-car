@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
 
 export const StyledHeader = styled.header`
+z-index:1;
 height: auto;
 border-bottom:1px solid rgb(14, 82, 91);
 box-shadow: 0 0 20px rgb(14, 82, 91);
@@ -35,11 +36,12 @@ transition: color 0.3s ease ;
 export const StyledNavigation = styled.nav`
 display: flex;
 align-items: center;
+
 `
 
 export const Container = styled.div`
     max-width: 300px;
-    padding:15px;
+    padding:0 15px;
     margin: 0 auto;
 @media screen and (min-width: 480px) {
     max-width: 428px;
@@ -54,14 +56,12 @@ export const Container = styled.div`
 }`
 
 
-export const PhonebookTitle = styled.h2`
-  display:none;
+export const Logo = styled.h2`
+  font-size:24px;
 
- @media screen and (min-width: 768px) {
-    display:block;
-    font-size: 30px;
-  margin: 0 auto;}
-`;
+
+`
+
 
 export const  HeaderWrapPage = styled.div`
   display:flex;

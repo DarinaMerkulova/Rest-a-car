@@ -1,32 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
-  HomePageSection,
-  HomePageTextWrap,
-  LinkHomePage,
-  StyledLinkHomePage,
-  TextHomePage,
-  TitleHomePage,
+    
 } from './HomePage.styled';
+import HeroSection from 'components/HomePage/HeroSection/HeroSection';
+import { useDispatch, useSelector} from 'react-redux';
+import { selectCars } from 'redux/selectors';
+import { getCarThunk } from 'redux/operations';
+
+
 
 const HomePage = () => {
+
+  const cars = useSelector(selectCars)
+  const dispatch = useDispatch();
+  useEffect(()=> {dispatch(getCarThunk())},[dispatch ])
+ console.log(cars)
+
   return (
     <div>
-      <TitleHomePage>Welcome to the Phonebook app!</TitleHomePage>
-      <HomePageSection>
-        <div></div>
-        <HomePageTextWrap>
-          <TextHomePage>
-            Here, you can conveniently store contacts and easily find the
-            numbers you need. Say goodbye to misunderstandings with phone
-            numbers – our Phonebook will always be by your side. Let's get
-            started now. Add your contacts and enjoy the convenience of our app!
-          </TextHomePage>
-          <LinkHomePage>
-            <StyledLinkHomePage to="/register">Sing up</StyledLinkHomePage>
-            <StyledLinkHomePage to="/login">Log in</StyledLinkHomePage>
-          </LinkHomePage>
-        </HomePageTextWrap>
-      </HomePageSection>
+     <HeroSection/>
+
     </div>
   );
 };
