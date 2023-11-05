@@ -1,8 +1,10 @@
 import styled from "styled-components";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai"
 
 export const Cardwrapper = styled.div`
 width:274px;
 height: 426px;
+position:relative;
 `
 
 export const CarImageWrapper = styled.div`
@@ -31,6 +33,7 @@ export const CardTitleName= styled.h2`
 font-size:16px;
 font-weight: inherit;
 
+
 `
 
 export const ModelWrapper = styled.span`
@@ -56,4 +59,38 @@ border-right: 1px solid rgb(26, 127, 141);
 `
 
 export const CardInfoWrapper = styled.div`
-margin-bottom: 28px`
+margin-bottom: 28px;`
+
+export const HeartBtn = styled.button`
+background-color: transparent;
+border:none;
+width:18px;
+height:18px;
+position:absolute;
+top:14px;
+right:14px;
+cursor: pointer;
+
+
+ 
+`
+
+export const HeartSvg =styled(AiOutlineHeart)`
+width:18px;
+height:18px;
+position:absolute;
+top:50%;
+left:50%;
+transform: translate(-50%, -50%);
+fill: rgb(255, 255, 255);
+`
+
+export const FilledHeartSvg =styled(AiFillHeart)`
+width:18px;
+height:18px;
+position:absolute;
+top:50%;
+left:50%;
+transform: translate(-50%, -50%);
+fill: rgb(26, 127, 141);
+`
